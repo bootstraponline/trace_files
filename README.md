@@ -1,4 +1,4 @@
-# TraceFiles
+# TraceFiles [![Gem Version](https://badge.fury.io/rb/trace_files.svg)](http://badge.fury.io/rb/trace_files)
 
 Gem for tracing ruby files.
 
