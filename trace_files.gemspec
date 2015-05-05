@@ -1,19 +1,18 @@
-# coding: utf-8
-lib = File.expand_path('../lib', __FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'trace_files/version'
+# encoding: utf-8
+require File.join(__dir__, 'lib/trace_files/version')
 
 Gem::Specification.new do |spec|
   spec.name          = 'trace_files'
   spec.version       = TraceFiles::VERSION
   spec.authors       = ['bootstraponline']
   spec.email         = ['code@bootstraponline.com']
+  spec.licenses      = ['Apache 2.0']
 
   spec.summary       = 'Trace Ruby files'
   spec.description   = spec.summary + '.'
   spec.homepage      = 'https://github.com/bootstraponline/trace_files'
 
-  spec.files         = `git ls-files -z`.split('\x0').reject { |f| f.match(%r{^(test|spec|features)/}) }
+  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
