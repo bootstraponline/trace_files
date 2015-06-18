@@ -23,4 +23,23 @@ describe 'trace_files' do
     actual = capture.string
     expect(actual).to eq(expected_no_colors)
   end
+
+  it 'returns a tracepoint object' do
+    obj = TraceFiles.set trace: [example_trace]
+
+    actual_class = obj.class
+    expected_class = TracePoint
+    expect(actual_class).to eq(expected_class)
+
+    # that defaults to enabled
+    expect(obj.enabled?).to eq(true)
+
+    # and can be disabled
+    obj.disable
+    expect(obj.enabled?).to eq(false)
+
+    # and enabled
+    obj.enable
+    expect(obj.enabled?).to eq(true)
+  end
 end
