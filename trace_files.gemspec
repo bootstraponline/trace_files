@@ -2,6 +2,9 @@
 require File.join(__dir__, 'lib/trace_files/version')
 
 Gem::Specification.new do |spec|
+  # TracePoint is new in Ruby 2. Doesn't exist in 1.9
+  spec.required_ruby_version = '>= 2'
+
   spec.name          = 'trace_files'
   spec.version       = TraceFiles::VERSION
   spec.authors       = ['bootstraponline']
@@ -20,4 +23,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rake', '~> 10.0'
   spec.add_development_dependency 'appium_thor', '~> 0.0', '>= 0.0.7'
   spec.add_development_dependency 'rspec', '~> 3.3.0'
+  spec.add_development_dependency 'pry', '~> 0.10.1'
+  spec.add_development_dependency 'thor', '~> 0.19.1'
 end

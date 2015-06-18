@@ -8,6 +8,7 @@ module TraceFiles
   #
   # @param :trace [Array<String>] the files to trace
   # @param :io [IO] io to print to
+  # @return [TracePoint] the trace point object
   def self.set spec_opts
     targets   = []
     files     = {}
@@ -26,23 +27,28 @@ module TraceFiles
     end
     return if targets.empty?
 
-    set_trace_func(lambda do |event, file, line, id, binding, classname|
-                     return unless targets.include?(file)
+    trace_point = TracePoint.new do |trace|
+      file_path = trace.path
+      if targets.include?(file_path)
+        line_number = trace.lineno
+        # never repeat a line
+        unless file_path == last_file && line_number == last_line
+          file_sym        = file_path.intern
+          files[file_sym] = IO.readlines(file_path) if files[file_sym].nil?
+          lines           = files[file_sym]
 
-                     # never repeat a line
-                     return if file == last_file && line == last_line
+          # arrays are 0 indexed and line numbers start at one.
+          io.print color if color # ANSI code
+          io.puts lines[line_number - 1]
+          io.print "\e[0m" if color # ANSI.clear
 
-                     file_sym        = file.intern
-                     files[file_sym] = IO.readlines(file) if files[file_sym].nil?
-                     lines           = files[file_sym]
+          last_file = file_path
+          last_line = line_number
+        end
+      end
+    end
 
-                     # arrays are 0 indexed and line numbers start at one.
-                     io.print color if color # ANSI code
-                     io.puts lines[line - 1]
-                     io.print "\e[0m" if color # ANSI.clear
-
-                     last_file = file
-                     last_line = line
-                   end)
+    trace_point.enable
+    trace_point
   end
 end
