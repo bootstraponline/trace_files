@@ -1,11 +1,21 @@
-# TraceFiles [![Gem Version](https://badge.fury.io/rb/trace_files.svg)](http://badge.fury.io/rb/trace_files)
+# TraceFiles [![Gem Version](https://badge.fury.io/rb/trace_files.svg)](http://badge.fury.io/rb/trace_files) [![Dependency Status](https://gemnasium.com/bootstraponline/trace_files.svg)](https://gemnasium.com/bootstraponline/trace_files) [![Build Status](https://travis-ci.org/bootstraponline/trace_files.svg?branch=master)](https://travis-ci.org/bootstraponline/trace_files/builds)
 
-Gem for tracing ruby files.
+Gem for tracing Ruby files.
 
-## Contributing
+```ruby
+require 'trace_files'
 
-1. Fork it ( https://github.com/[my-github-username]/trace_files/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+TraceFiles.set trace: [__FILE__]
+```
+
+Glob example.
+
+```ruby
+require 'trace_files'
+
+targets = Dir.glob(File.join(__dir__, '../lib/**/*.rb'))
+targets.map! { |t| File.expand_path t }
+puts "Tracing: #{targets}"
+
+TraceFiles.set trace: targets
+```
