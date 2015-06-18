@@ -19,3 +19,13 @@ puts "Tracing: #{targets}"
 
 TraceFiles.set trace: targets
 ```
+
+The `TraceFiles.set` method returns a [TracePoint](http://ruby-doc.org/core-2.2.2/TracePoint.html)
+object.
+
+```ruby
+trace_point = TraceFiles.set trace: [__FILE__], color: false
+trace_point.disable
+trace_point.enable
+trace_point.enabled?
+```
