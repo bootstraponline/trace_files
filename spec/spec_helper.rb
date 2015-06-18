@@ -22,5 +22,17 @@ def expected_colors
 end
 
 def expected_no_colors
-  expected_colors.gsub("\e[32m", '')
+  (<<-"CODE").freeze
+  def self.run
+    1 + 2
+    three = lambda { 3 }
+    val = 2.times { three.call }
+    three = lambda { 3 }
+    val = 2.times { three.call }
+    three = lambda { 3 }
+    val = 2.times { three.call }
+    val * 4
+    '5'
+  end
+  CODE
 end

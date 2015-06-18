@@ -17,7 +17,7 @@ describe 'trace_files' do
   end
 
   it 'traces correctly without color' do
-    TraceFiles.set trace: [example_trace], io: capture, color: ''
+    TraceFiles.set trace: [example_trace], io: capture, color: false
     ExampleTrace.run
 
     actual = capture.string
