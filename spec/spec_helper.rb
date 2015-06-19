@@ -1,4 +1,8 @@
 require 'rubygems'
+
+require 'coveralls'
+Coveralls.wear!
+
 require 'pry'
 require 'rspec'
 require_relative '../lib/trace_files'

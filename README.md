@@ -1,4 +1,8 @@
-# TraceFiles [![Gem Version](https://badge.fury.io/rb/trace_files.svg)](http://badge.fury.io/rb/trace_files) [![Dependency Status](https://gemnasium.com/bootstraponline/trace_files.svg)](https://gemnasium.com/bootstraponline/trace_files) [![Build Status](https://travis-ci.org/bootstraponline/trace_files.svg?branch=master)](https://travis-ci.org/bootstraponline/trace_files/builds)
+# TraceFiles
+[![Gem Version](https://badge.fury.io/rb/trace_files.svg)](http://badge.fury.io/rb/trace_files)
+[![Dependency Status](https://gemnasium.com/bootstraponline/trace_files.svg)](https://gemnasium.com/bootstraponline/trace_files)
+[![Build Status](https://travis-ci.org/bootstraponline/trace_files.svg?branch=master)](https://travis-ci.org/bootstraponline/trace_files/builds)
+[![Coverage Status](https://coveralls.io/repos/bootstraponline/trace_files/badge.svg?nocache)](https://coveralls.io/r/bootstraponline/trace_files)
 
 Gem for tracing Ruby files.
 
